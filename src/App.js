@@ -22,11 +22,14 @@ const App = () => {
     },
   ];
 
-  console.log("App 실행.");
+  const addExpenseHandler = (newExpense) => {
+    console.log("App.js에서 응답함!");
+    console.log(newExpense);
+  };
 
   return (
     <>
-      <NewExpense />
+      <NewExpense onAddExpense={addExpenseHandler} />
       <ExpenseList items={expenses} />
     </>
   );
