@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // css 로딩
 import "./ExpenseItem.css";
 import ExpenseDate from "./ExpenseDate";
-import Card from "./UI/Card";
+import Card from "../UI/Card";
 
 const ExpenseItem = ({ title, price: propsPrice, date }) => {
   // let itemTitle = title;
@@ -39,7 +39,7 @@ const ExpenseItem = ({ title, price: propsPrice, date }) => {
     //   // 화면을 리렌더링하고 같을 경우 리렌더링하지 않는다.
     //   return '메롱';
     // });
-    setItemTitle('메롱');
+    setItemTitle("메롱");
   };
 
   return (
