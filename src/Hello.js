@@ -1,7 +1,14 @@
 import React from "react";
 
-const Hello = () => {
-  return <div>Hello React</div>;
+const Hello = (props) => {
+  console.log("Hello Component");
+  console.log(props);
+  return (
+    <div>
+      {props.children}
+      Hello React
+    </div>
+  );
 };
 
 export default Hello;
