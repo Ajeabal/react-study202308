@@ -1,49 +1,64 @@
 import React, { useState } from "react";
-import ExpenseList from "./components/Expenses/ExpenseList";
-import NewExpense from "./components/NewExpense/NewExpense";
+import CourseInput from "./components/CourseGoals/CourseInput";
+import CourseList from "./components/CourseGoals/CourseList";
+import "./App.css";
+
+const DUMMY_DATA = [
+  {
+    id: "g1",
+    text: "리액트 컴포넌트 스타일링 마스터하기",
+  },
+  {
+    id: "g2",
+    text: "UI프로그래밍 고수되기",
+  },
+];
 
 const App = () => {
-  // 지출 항목 객체 배열
-  const expenses = [
-    {
-      id: 1,
-      title: "바나나",
-      price: 20000,
-      date: new Date(2023, 3 - 1, 23),
-    },
-    {
-      id: 2,
-      title: "BBQ치킨",
-      price: 20000,
-      date: new Date(2022, 5 - 1, 21),
-    },
-    {
-      id: 3,
-      title: "도미노피자",
-      price: 35000,
-      date: new Date(2023, 7 - 1, 14),
-    },
-    {
-      id: 4,
-      title: "엽떡",
-      price: 17000,
-      date: new Date(2021, 3 - 1, 28),
-    },
-  ];
+  const [goals, setGoals] = useState(DUMMY_DATA);
 
-  // 지출 객체 배열의 상태변수
-  const [expenseList, setExpenseList] = useState(expenses);
+  // coursItem까지 내려보낼 삭제 이벤트
+  const deleteGoalHandler = (id) => {
+    // const index = updateGoals.findIndex((goal) => goal.id === id);
+    // updateGoals.splice(index, 1);
+    // const updateGoals = goals.filter((goal) => goal.id !== id);
+    setGoals((prevGoals) => prevGoals.filter((goal) => goal.id !== id));
+  };
 
-  const addExpenseHandler = (newExpense) => {
-    console.log(newExpense);
-    setExpenseList([...expenseList, newExpense]);
+  // courseList 조건부 렌더링
+  let listContent = (
+    <p
+      style={{
+        color: "red",
+        fontSize: "2em",
+        textAlign: "center",
+      }}
+    >
+      목표를 등록해주세요.
+    </p>
+  );
+  if (goals.length > 0) {
+    listContent = <CourseList items={goals} onDelete={deleteGoalHandler} />;
+  }
+  // Input한테 전달할 함수
+  const addGoalHandler = (text) => {
+    // console.log("전달받은 text: ", text);
+    const newGoal = {
+      id: Math.random().toString(),
+      text: text,
+    };
+    // 상태변수(배열) 수정
+    // const updateGoals = [...goals, newGoal];
+    setGoals((prevGoals) => [...prevGoals, newGoal]);
   };
 
   return (
-    <>
-      <NewExpense onAddExpense={addExpenseHandler} />
-      <ExpenseList items={expenseList} />
-    </>
+    <div>
+      <section id="goal-form">
+        <CourseInput onAdd={addGoalHandler} />
+      </section>
+      <section id="goals">{listContent}</section>
+    </div>
   );
 };
 
