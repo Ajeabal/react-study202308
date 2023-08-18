@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import CourseInput from "./components/CourseGoals/CourseInput";
 import CourseList from "./components/CourseGoals/CourseList";
 import "./App.css";
+import AddUsers from "./components/Users/AddUsers";
+import UserList from "./components/Users/UserList";
 
 const DUMMY_DATA = [
   {
@@ -54,10 +56,8 @@ const App = () => {
 
   return (
     <div>
-      <section id="goal-form">
-        <CourseInput onAdd={addGoalHandler} />
-      </section>
-      <section id="goals">{listContent}</section>
+      <AddUsers />
+      <UserList />
     </div>
   );
 };
