@@ -25,3 +25,4 @@ $ npm start
 추가 라이브러리 설치
 
 1. styled-componenets
+2. css 확장 라이브러리 sass
