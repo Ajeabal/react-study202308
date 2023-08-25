@@ -1,33 +1,54 @@
-.form-control {
-  margin: 0.5rem 0;
+$button-color: #8a2b06;
+$hover-active-bg-color: #5a1a01;
+$hover-active-border-color: #5a1a01;
+$hover-active-color: white;
+$button-alt-color: #8a2b06;
+$button-bg-color: #8a2b06;
+$button-color: white;
+
+.cart-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 20rem;
+  overflow: scroll;
 }
 
-.form-control label {
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-weight: bold;
-  display: block;
-  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  margin: 1rem 0;
 }
 
-.form-control input {
-  display: block;
-  width: 100%;
-  border: 1px solid #ccc;
-  font: inherit;
-  line-height: 1.5rem;
-  padding: 0 0.25rem;
-}
+.actions {
+  text-align: right;
 
-.form-control input:focus {
-  outline: none;
-  background: #fad0ec;
-  border-color: #8b005d;
-}
+  button {
+    font: inherit;
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid $button-bg-color;
+    padding: 0.5rem 2rem;
+    border-radius: 25px;
+    margin-left: 1rem;
 
-.form-control.invalid input {
-  border-color: red;
-  background: #ffd7d7;
-}
+    &:hover,
+    &:active {
+      background-color: $hover-active-bg-color;
+      border-color: $hover-active-border-color;
+      color: $hover-active-color;
+    }
+  }
 
-.form-control.invalid label {
-  color: red;
+  .button--alt {
+    color: $button-alt-color;
+  }
+
+  .button {
+    background-color: $button-bg-color;
+    color: $button-color;
+  }
 }

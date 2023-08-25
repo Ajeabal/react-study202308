@@ -1,4 +1,4 @@
-$myOrange: #9c8609;
+$my-orange: #fbaa30;
 
 .header {
   position: fixed;
@@ -6,7 +6,7 @@ $myOrange: #9c8609;
   left: 0;
   width: 100%;
   height: 5rem;
-  background-color: $myOrange;
+  background-color: $my-orange;
   color: white;
   display: flex;
   justify-content: space-between;
