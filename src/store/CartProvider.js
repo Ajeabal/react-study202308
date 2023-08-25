@@ -37,10 +37,23 @@ const cartReducer = (state, action) => {
       totalPrice: updatedPrice,
     }; // 이 액션에 대한 업데이트된 새로운 상태 반환
   } else if (action.type === "REMOVE") {
-    const removedItems = state.items.filter((item) => item.id !== action.id);
+    const existingItems = [...state.items];
+    const index = existingItems.findIndex((item) => item.id === action.id);
+
+    const delTargetItem = existingItems[index];
+
+    const updatedPrice = state.totalPrice - delTargetItem.price;
+    let removedItems;
+    if (delTargetItem.amount === 1) {
+      removedItems = existingItems.filter((item) => item.id !== action.id);
+    } else {
+      delTargetItem.amount--;
+      removedItems = [...existingItems];
+    }
 
     return {
       items: removedItems,
+      totalPrice: updatedPrice,
     };
   }
 

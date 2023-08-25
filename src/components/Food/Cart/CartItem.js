@@ -4,9 +4,10 @@ import CartContext from "../../../store/cart-context";
 import styles from "./CartItem.module.scss";
 
 const CartItem = ({ cart }) => {
-  const { addItem } = useContext(CartContext);
+  const { addItem, removeItem } = useContext(CartContext);
+  console.log(cart);
 
-  const { name, price, amount } = cart;
+  const { id, name, price, amount } = cart;
 
   const {
     "cart-item": cartItem,
@@ -20,6 +21,9 @@ const CartItem = ({ cart }) => {
   const cartAddItemHandler = () => {
     addItem({ ...cart, amount: 1 });
   };
+  const cartRemoveItemHandler = () => {
+    removeItem(id);
+  };
 
   return (
     <li className={cartItem}>
@@ -31,7 +35,7 @@ const CartItem = ({ cart }) => {
         </div>
       </div>
       <div className={actions}>
-        <button>−</button>
+        <button onClick={cartRemoveItemHandler}>−</button>
         <button onClick={cartAddItemHandler}>+</button>
       </div>
     </li>
